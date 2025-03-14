@@ -3,10 +3,11 @@ from flask_cors import CORS
 import pickle
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-import xgboost as xgb  # Add this import
+import xgboost as xgb  
+import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:8000"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Load the heart disease model
 with open('models/heart_model.pkl', 'rb') as f:
