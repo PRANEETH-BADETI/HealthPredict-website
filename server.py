@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import pickle
 import numpy as np
@@ -168,6 +168,14 @@ def predict_diabetes():
         return jsonify(response)
     except Exception as e:
         return jsonify({'error': str(e)}), 400
+
+@app.route('/')
+def serve_index():
+    return send_from_directory('.', 'index.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    return send_from_directory('.', path)
 
 if __name__ == '__main__':
     app.run(debug=True)
