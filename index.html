@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthPredict - AI Health Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Health<span>Predict</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Our Models</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#predict">Try It</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>AI-Powered Health Prediction</h1>
+            <p>Advanced machine learning models to predict stroke, heart disease, and diabetes risks with high accuracy.</p>
+            <a href="#predict" class="btn btn-primary">Try Our Predictors</a>
+            <a href="#features" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Our Prediction Models</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="card-header stroke-header">
+                        <h3>Stroke Prediction</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Our stroke prediction model analyzes various health metrics to assess your risk of having a stroke.</p>
+                        <a href="#predict" class="btn btn-primary" onclick="activateTab('stroke')">Check Stroke Risk</a>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="card-header heart-header">
+                        <h3>Heart Disease Prediction</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Identify your risk of heart disease based on clinical parameters.</p>
+                        <a href="#predict" class="btn btn-primary" onclick="activateTab('heart')">Check Heart Risk</a>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="card-header diabetes-header">
+                        <h3>Diabetes Prediction</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Our diabetes prediction model evaluates your risk factors to determine likelihood of developing diabetes.</p>
+                        <a href="#predict" class="btn btn-primary" onclick="activateTab('diabetes')">Check Diabetes Risk</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Select a Model</h3>
+                    <p>Choose from our stroke, heart disease, or diabetes prediction models.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Enter Your Data</h3>
+                    <p>Provide your health information through our secure online form.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get Results</h3>
+                    <p>Receive an instant risk assessment based on our AI analysis.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Take Action</h3>
+                    <p>Use the insights to discuss prevention strategies with your healthcare provider.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prediction Form Section -->
+    <section class="prediction-section" id="predict">
+        <div class="container">
+            <h2 class="section-title">Try Our Health Predictors</h2>
+            <div class="form-container">
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('stroke')">Stroke</button>
+                    <button class="tab" onclick="switchTab('heart')">Heart Disease</button>
+                    <button class="tab" onclick="switchTab('diabetes')">Diabetes</button>
+                </div>
+            <!-- stroke  Prediction Form -->
+            <div id="stroke-form" class="form-content">
+                <h2>Stroke Prediction</h2>
+                <form id="strokeForm" onsubmit="predictStroke(event)">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="stroke-age">Age:</label>
+                                <input type="number" id="stroke-age" name="stroke-age" min="0" max="120" step="0.1" required><br>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="stroke-sex">Gender:</label>
+                                <select id="stroke-sex" name="stroke-sex" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="female">Female</option>
+                                    <option value="male">Male</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="stroke-hypertension">Hypertension:</label>
+                                <select id="stroke-hypertension" name="stroke-hypertension" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select><br>
+                            </div>
+                        </div>
+
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="stroke-heart-disease">Heart Disease:</label>
+                                <select id="stroke-heart-disease" name="stroke-heart-disease" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="stroke-glucose">Average Glucose Level (mg/dL):</label>
+                                <input type="number" id="stroke-glucose" name="stroke-glucose" min="0" step="0.01" required><br>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                                <div class="form-group">
+                                    <label for="stroke-bmi">BMI:</label>
+                                    <input type="number" id="stroke-bmi" name="stroke-bmi" min="0" step="0.1" required><br>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="stroke-ever-married">Ever Married:</label>
+                                <select id="stroke-ever-married" name="stroke-ever-married" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select><br>
+                            </div>
+                        </div>
+
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="stroke-work-type">Work Type:</label>
+                                <select id="stroke-work-type" name="stroke-work-type" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="private">Private</option>
+                                    <option value="self-employed">Self-employed</option>
+                                    <option value="never_worked">Never Worked</option>
+                                    <option value="children">Children</option>
+                                    <option value="govt_job">Government Job</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="stroke-residence">Residence Type:</label>
+                                <select id="stroke-residence" name="stroke-residence" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="urban">Urban</option>
+                                    <option value="rural">Rural</option>
+                                </select><br>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="stroke-smoking">Smoking Status:</label>
+                                <select id="stroke-smoking" name="stroke-smoking" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="never">Never Smoked</option>
+                                    <option value="former">Formerly Smoked</option>
+                                    <option value="current">Current Smoker</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+                     <button type="submit" class="btn btn-primary">Predict Stroke Risk</button>
+                </form>
+                <div id="stroke-result" class="prediction-result">
+                    <h3>Prediction Result</h3>
+                    <p id="stroke-prediction-text"></p>
+                </div>
+            </div>
+
+            <!-- Heart Disease Prediction Form -->
+            <div id="heart-form" class="form-content">
+                <h2>Heart Disease Risk Assessment</h2>
+                <form id="heartForm" onsubmit="predictHeart(event)">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="heart-age">Age (18-100)</label>
+                                <input type="number" id="heart-age" required min="18" max="100" step="1">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="heart-sex">Sex</label>
+                                <select id="heart-sex" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="heart-cp">Chest Pain Type</label>
+                                <select id="heart-cp" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="typical">Typical Angina</option>
+                                    <option value="atypical">Atypical Angina</option>
+                                    <option value="non-anginal">Non-Anginal Pain</option>
+                                    <option value="asymptomatic">Asymptomatic</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="heart-trestbps">Resting BP (0-200 mmHg)</label>
+                                <input type="number" id="heart-trestbps" required min="0" max="200" step="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="heart-chol">Cholesterol (0-603 mg/dl)</label>
+                                <input type="number" id="heart-chol" required min="0" max="603" step="1">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="heart-fbs">Fasting Blood Sugar > 120 mg/dl</label>
+                                <select id="heart-fbs" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="heart-resting-ecg">Resting ECG</label>
+                                <select id="heart-resting-ecg" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">Normal</option>
+                                    <option value="1">ST-T Wave Abnormality</option>
+                                    <option value="2">Left Ventricular Hypertrophy</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="heart-max-hr">Max Heart Rate (60-202)</label>
+                                <input type="number" id="heart-max-hr" required min="60" max="202" step="1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="heart-ex-angina">Exercise-Induced Angina</label>
+                                <select id="heart-ex-angina" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="heart-oldpeak">Oldpeak (-2.6 to 6.2)</label>
+                                <input type="number" id="heart-oldpeak" required min="-2.6" max="6.2" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="heart-st-slope">ST Slope</label>
+                        <select id="heart-st-slope" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="0">Upsloping</option>
+                            <option value="1">Flat</option>
+                            <option value="2">Downsloping</option>
+                            <option value="3">Unspecified</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Predict Heart Disease Risk</button>
+                </form>
+                <div id="heart-result" class="prediction-result">
+                    <h3>Prediction Result</h3>
+                    <p id="heart-prediction-text"></p>
+                </div>
+            </div>
+
+            <!-- Diabetes Prediction Form -->
+            <div id="diabetes-form" class="form-content">
+                <h2>Diabetes Prediction</h2>
+                <form id="diabetesForm" onsubmit="predictDiabetes(event)">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="diabetes-age">Age:</label>
+                                <input type="number" id="diabetes-age" name="diabetes-age" min="0" max="120" step="0.1" required><br>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="diabetes-sex">Gender:</label>
+                                <select id="diabetes-sex" name="diabetes-sex" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="female">Female</option>
+                                    <option value="male">Male</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="diabetes-hypertension">Hypertension:</label>
+                                <select id="diabetes-hypertension" name="diabetes-hypertension" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select><br>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="diabetes-heart-disease">Heart Disease:</label>
+                                <select id="diabetes-heart-disease" name="diabetes-heart-disease" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="no">No</option>
+                                    <option value="yes">Yes</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="diabetes-bmi">BMI:</label>
+                                <input type="number" id="diabetes-bmi" name="diabetes-bmi" min="0" step="0.1" required><br>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="diabetes-hba1c">HbA1c Level (%):</label>
+                                <input type="number" id="diabetes-hba1c" name="diabetes-hba1c" min="0" step="0.1" required><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="diabetes-glucose">Blood Glucose Level (mg/dL):</label>
+                                <input type="number" id="diabetes-glucose" name="diabetes-glucose" min="0" step="1" required><br>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="diabetes-smoking">Smoking History:</label>
+                                <select id="diabetes-smoking" name="diabetes-smoking" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="never">Never</option>
+                                    <option value="former">Former</option>
+                                    <option value="current">Current</option>
+                                    <option value="not current">Not Current</option>
+                                    <option value="ever">Ever</option>
+                                    <option value="no info">No Info</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Predict Diabetes Risk</button>
+                </form>
+                <div id="diabetes-result" class="prediction-result" style="display: none;">
+                    <h3>Prediction Result</h3>
+                    <p id="diabetes-prediction-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="logo">Health<span>Predict</span></div>
+            <p>AI-powered health prediction models to help you stay ahead of potential health risks.</p>
+            <div class="social-icons">
+                <a href="#">F</a>
+                <a href="#">T</a>
+                <a href="#">L</a>
+                <a href="#">I</a>
+            </div>
+            <p>© 2025 HealthPredict. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
