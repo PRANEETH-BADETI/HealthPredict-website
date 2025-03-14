@@ -3,8 +3,7 @@ from flask_cors import CORS
 import pickle
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-import xgboost as xgb  
-import os
+import xgboost as xgb
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
