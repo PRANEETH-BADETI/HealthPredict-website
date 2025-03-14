@@ -28,7 +28,7 @@ function activateTab(tabId) {
 async function sendPrediction(endpoint, data, resultElement, predictionTextElement) {
     try {
         console.log('Sending data to endpoint:', endpoint, data);
-        const response = await fetch(`http://localhost:5000/${endpoint}`, {
+        const response = await fetch(`https://healthpredict-mmjr.onrender.com/${endpoint}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
